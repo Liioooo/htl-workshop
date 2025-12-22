@@ -4,7 +4,7 @@
 
 ### Setup environment
 
-Fill in the environment variable with your values.
+Create a file `.env.dev` and fill in the environment variables with your values.
 
 ````text
 APP_SECRET=...
