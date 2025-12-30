@@ -37,5 +37,11 @@ COPY ./docker/production/apache/default.conf /etc/apache2/sites-available/000-de
 COPY  . .
 COPY --from=vendor /app/vendor ./vendor
 
+# Install assets
+RUN php bin/console importmap:install --no-interaction && php bin/console cache:clear --env=prod
+
+# Permissions
+RUN mkdir -p var/cache var/log && chown -R www-data:www-data var assets public/uploads
+
 EXPOSE 80
 VOLUME ["/var/www/html/public/uploads"]
