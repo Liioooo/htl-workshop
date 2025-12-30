@@ -17,6 +17,10 @@ RUN composer install \
 # =========================
 FROM php:8.4-apache
 
+# PROD_ENV
+ENV APP_ENV=prod
+ENV APP_DEBUG=0
+
 # Install PHP Extension Postgresql
 RUN apt-get update && apt-get install -y libpq-dev \
 && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
